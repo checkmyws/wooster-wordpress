@@ -3,6 +3,7 @@ FROM wordpress:fpm
 RUN apt-get update && apt-get install -y libmemcached-dev tidy csstidy
 
 RUN curl -o memcached.tgz -SL http://pecl.php.net/get/memcached-2.2.0.tgz \
+        && mkdir -p /usr/src/php/ext/ \
         && tar -xf memcached.tgz -C /usr/src/php/ext/ \
         && rm memcached.tgz \
         && mv /usr/src/php/ext/memcached-2.2.0 /usr/src/php/ext/memcached
